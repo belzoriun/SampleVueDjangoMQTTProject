@@ -14,21 +14,8 @@ class Database():
         self.db = self._init_db()
         self.curs = self._open_cursor()
 
-    def execute(self, cb:(lambda query:query)):
-        query = Database.QueryHandler()
-        cb(query)
-        if len(query.queries) > 0:
-            if len(query.queries) == 1:
-                self.curs.execute(query.queries[0][0], query.queries[0][1])
-            else:
-                querytext = ""
-                params = []
-                for (sql, p) in query.queries:
-                    if not sql.endswith(";"):
-                        sql += ";"
-                    querytext += sql
-                    params.extend(p)
-                self.curs.execute(querytext, params)
+    def execute(self, query, params=[]):
+        self.curs.execute(query, params)
         return self
 
     def commit(self):
