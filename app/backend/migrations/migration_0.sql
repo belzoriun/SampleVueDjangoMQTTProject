@@ -9,13 +9,13 @@ CREATE TABLE User(
     id varchar(36) PRIMARY KEY,
     firstname VARCHAR(20),
     lastname VARCHAR(20),
-    email VARCHAR(30),
+    email VARCHAR(30) UNIQUE,
     created_date timestamp,
     updated_date timestamp
 );
 CREATE TABLE UserLogin(
     user_id varchar(36) PRIMARY KEY,
-    login varchar(30),
+    login varchar(30) UNIQUE,
     password varchar(50),
     created_date timestamp,
     updated_date timestamp,
