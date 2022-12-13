@@ -4,3 +4,4 @@ Scripts
 pyvenv.cfg
 *.sqlite3
 *.pyc
+**\env.py
